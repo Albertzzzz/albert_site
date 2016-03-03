@@ -7,7 +7,8 @@ class Person (models.Model):
     name = models.CharField(max_length=200)
     age = models.IntegerField()
 
-    def __str__(self):
-        return self.name
-    def __int__(self):
-        return self.age
+    def my_property(self):
+        return self.name + ' ' + str(self.age)
+    my_property.short_description = "name and age of the person"
+
+    full_name = property(my_property)
